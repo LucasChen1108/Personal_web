@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+:root {
+  --background: #060c0b;
+  --foreground: #e7f3ef;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-mono: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, Consolas, monospace;
+}
+
+html,
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #1f3733 transparent;
+}
