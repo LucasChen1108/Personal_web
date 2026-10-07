@@ -43,8 +43,8 @@ export function ArcLabVignette({ position }: { position: THREE.Vector3 }) {
       <Line points={ghost} color="#7d8a9a" lineWidth={1.5} dashed dashSize={0.15} gapSize={0.1} transparent opacity={0.6} />
       <Line points={actual} color="#4dd0c4" lineWidth={2.5} />
       <mesh ref={markerRef}>
-        <sphereGeometry args={[0.08, 16, 16]} />
-        <meshStandardMaterial color="#4dd0c4" emissive="#4dd0c4" emissiveIntensity={1.5} />
+        <sphereGeometry args={[0.06, 16, 16]} />
+        <meshStandardMaterial color="#4dd0c4" emissive="#4dd0c4" emissiveIntensity={0.9} />
       </mesh>
     </group>
   );

@@ -11,17 +11,23 @@ npm run build     # production build
 npm run start     # serve the production build
 ```
 
-## Deploy
+## Deploy (GitHub Pages)
 
-Push to a GitHub repo and import it in Vercel (same pipeline as ArcLab). No environment variables are required.
+Live at **https://lucaschen1108.github.io/Personal_web/**.
+
+Every push to `main` triggers `.github/workflows/deploy.yml`, which builds a static export (`output: "export"` in `next.config.ts`) and publishes the `out/` folder to GitHub Pages. The repo sub-path (`/Personal_web`) is passed in at build time as `PAGES_BASE_PATH`, so `npm run dev` locally still serves at `/`.
+
+One-time setup: repo **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+
+To preview the production build locally under the same sub-path: `PAGES_BASE_PATH=/Personal_web npm run build`, then serve `out/` at `/Personal_web/`.
 
 ## Structure
 
 - `src/data/profile.ts` — your name, bio, skills, contact links. Edit this for any copy change.
 - `src/data/projects.ts` — one entry per project (ArcLab, PixelProof, the two in-progress agents). Each has `description`, `highlight`, `stack`, and an optional `link`. **This is the main thing to keep updated** — fill in the two `in-progress` entries once those projects have a demo-able state.
 - `src/lib/stations.ts` — the camera path: station order, spacing and camera offsets. Add/reorder stations here.
-- `src/components/three/Stations/*` — the 3D vignette for each station (ArcLab's ghost-trajectory curve, PixelProof's detection grid, the two agent placeholders, the chalkboard and desk). Swap any of these for a custom Blender model later without touching anything else.
-- `src/components/Overlay.tsx` — the HTML text card that cross-fades in per station. Real, accessible DOM text (not canvas text), so it's readable and crawlable.
+- `src/components/three/Stations/*` — the 3D vignette for each station (ArcLab's ghost-trajectory curve, PixelProof's detection grid, the two agent placeholders, and the contact desk). Swap any of these for a custom Blender model later without touching anything else.
+- `src/components/Overlay.tsx` — the HTML text card that cross-fades in per station. Real, accessible DOM text (not canvas text), so it's readable and crawlable. Also holds the role reel beside your name on the About page — edit the roles in `profile.ts`.
 - `src/components/StaticFallback.tsx` — the plain, non-animated version of the whole site. Shown automatically when the visitor's OS has "reduce motion" on, or when they click **Skip animation** (top right) — their choice is remembered.
 
 ## What's a placeholder right now

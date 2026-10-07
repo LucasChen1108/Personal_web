@@ -42,8 +42,14 @@ export function Experience() {
   return (
     <>
       <div style={{ height: `${STATION_COUNT * 100}vh` }} />
-      <div className="fixed inset-0">
-        <Canvas shadows camera={{ fov: 45 }} dpr={[1, 1.5]}>
+      <div
+        className="fixed inset-0"
+        style={{
+          background:
+            "radial-gradient(120% 90% at 50% 38%, #123330 0%, #0a201d 32%, #051312 62%, #030a09 100%)",
+        }}
+      >
+        <Canvas shadows camera={{ fov: 45 }} dpr={[1, 1.5]} gl={{ alpha: true, antialias: true }}>
           <Scene progressRef={progressRef} />
         </Canvas>
       </div>
